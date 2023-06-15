@@ -18,7 +18,7 @@ function LoginForm(){
                         <i class='bx bx-lock-alt'></i>
                     </div>
                     <div>
-                      <button type="submit" className="btn btn-primary" name = "submit" id='LoginSubmit'>Add User</button>
+                      <button type="submit" className="btn btn-primary" name = "submit" id='LoginSubmit'>Sign In</button>
                     </div>
                 </form>
             </div>
