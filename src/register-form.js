@@ -1,67 +1,96 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
+import {Container, TextField, CssBaseline, Typography, Grid, Box, Button, Link} from '@mui/material';
+
 
 const registerContent =[
     {
-        id:'UsernameInput',
-        name:'Username',
-        type: 'text'
+        id:'fnameInput',
+        autocomplete: "given-name",
+        name:'firstname',
+        label: 'First Name',
+        type :'text'
     },
     {
-        id:'PasswordInput',
-        name:'Password',
-        type: 'password'
+        id:'lnameInput',
+        autocomplete: "family-name",
+        name:'lastname',
+        label: 'Last Name',
+        type:'text'
     },
     {
-        id:'ConPasswordInput',
-        name:'Confirmation Password',
-        type: 'password'
+        id:'passwordInput',
+        autocomplete: "password",
+        name:'password',
+        label: 'Password',
+        type:'password'
     },
     {
-        id:'EmailInput',
-        name:'Email',
-        type: 'email'
+        id:'cPasswordInput',
+        autocomplete: "Confirm-Password",
+        name:'confirmPassword',
+        label: 'Confirm Password',
+        type:'password'
     },
     {
-        id:'PhoneInput',
-        name:'Phone number',
-        type: 'tel'
+        id:'email',
+        autocomplete: "email",
+        name:'email',
+        label: 'Email Address',
+        type:'email'
     },
     {
-        id:'DepartmentInput',
-        name:'Department',
-        type: 'text'
+        id:'phoneInput',
+        autocomplete: "phone-number",
+        name:'phone',
+        label: 'Phone Number',
+        type:'tel'
+    },
+    {
+        id:'departmentInput',
+        autocomplete: "department",
+        name:'department',
+        label: 'Department',
+        type:'text'
     }
 ]
 
 function RegisterTextfield(props){
-    const {id, name, type} = props.content
+    const {id, name, autocomplete, label, type} = props.content
     return(
-        <div className="col-md-12 mb-3">
-            <label htmlFor={id} className="form-label">{name}</label>
-            <input type={type} id={id} className="form-control" aria-labelledby="passwordHelpBlock"/>
-        </div>
+        <Grid item >
+            <TextField autoComplete={autocomplete} type={type} name={name} required fullWidth id={id} label={label} sx={{mt: 3}} autoFocus/>
+        </Grid>
     )
 }
 
 
 export default function RegisterForm(){
+    // contructor(props){
+    //     super (props)
+    //     this.state={
+    //         username :"",
+    //         password:"",
+    //         email:"",
+    //         phone:"",
+    //         department:""
+    //     }
+    // }
     return(
-        <div className='card w-50 m-auto position-absolute top-50 start-50 translate-middle d-flex justify-content-center'>
-            <div className="card-header">
-                <h5>Registration Form</h5>
-            </div>
-            <div className='card-body'>
-                <form action='' method='post'>
+        <Container component="main" maxWidth="sm" sx={{mt: 4, mb:5}}  >
+            <CssBaseline/>
+                <Typography component="h1" variant='h5' align='center'>Registration Form</Typography>
+                <Box component='form' >
                     {registerContent.map(content=>{
                         return <RegisterTextfield key={content.id} content={content}/>
                         })
                     }
-                    <div>
-                      <button type="submit" className="btn btn-primary" name = "submit" id='RegisterSubmit'>Add User</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+                    <Button type="submit" variant="contained" sx={{mt: 3}} fullWidth>Add User</Button>
+                    <Grid item justifyContent='flex-end' sx={{mt:2}}>
+                        <Typography>Already have an account?<Link href="" variant='body2'>Sign in</Link></Typography>
+                    </Grid>
+                    
+                </Box>
+                
+        </Container>
         
     )
 }
